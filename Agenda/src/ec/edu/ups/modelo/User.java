@@ -35,7 +35,7 @@ public class User implements Serializable{
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> telefonos;
     
     public User(){
@@ -130,11 +130,17 @@ public class User implements Serializable{
     }
     
     public void deletePhone(Phone phone) {
-    	this.telefonos.remove(phone);
+    	if(telefonos.contains(phone)) {
+    		this.telefonos.remove(phone);
+        	phone.setUser(null);
+    	}
     }
     
     public void addPhone(Phone phone) {
-    	this.telefonos.add(phone);
+    	if(!telefonos.contains(phone)) {
+    		this.telefonos.add(phone);
+        	phone.setUser(this);
+    	}
     }
 
 	@Override

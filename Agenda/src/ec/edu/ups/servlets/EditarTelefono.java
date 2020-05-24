@@ -7,6 +7,7 @@ package ec.edu.ups.servlets;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PhoneDAO;
+import ec.edu.ups.dao.UserDAO;
 import ec.edu.ups.modelo.Phone;
 import ec.edu.ups.modelo.User;
 import java.io.IOException;
@@ -42,11 +43,14 @@ public class EditarTelefono extends HttpServlet {
         String id = request.getParameter("idTelefono");
         if (sesion != null && id != null) {
             if (sesion.equals("true")) {  
+            	UserDAO userDao = DAOFactory.getDAOFactory().getUserDAO();
+                User user = userDao.findById(String.valueOf(request.getSession().getAttribute("userID")));
+
                 PhoneDAO phoneDao = DAOFactory.getDAOFactory().getPhoneDAO();
                 Phone phone = phoneDao.findById(Integer.parseInt(id));
-                //phone.getUser().deletePhone(phone);
-                phoneDao.delete(phone);
-                //System.out.println("telefono a eliminar.. " + id );
+                user.deletePhone(phone);
+
+                userDao.update(user);
                 response.sendRedirect("my-agenda");
             }
         }

@@ -36,10 +36,11 @@ public class Phone implements Serializable{
         
     }
 
-    public Phone(String numero, String tipo, String operadora) {
+    public Phone(String numero, String tipo, String operadora, User user) {
         this.numero = numero;
         this.tipo = tipo;
         this.operadora = operadora;
+        this.user = user;
     }
 
     public int getId() {
@@ -82,7 +83,55 @@ public class Phone implements Serializable{
         this.user = user;
     }
     
+    
+    
     @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((operadora == null) ? 0 : operadora.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Phone other = (Phone) obj;
+		if (id != other.id)
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		if (operadora == null) {
+			if (other.operadora != null)
+				return false;
+		} else if (!operadora.equals(other.operadora))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	@Override
     public String toString() {
         return "Telefono{" + "id=" + id + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora + "User: "+ user.getCedula() + '}';
     }

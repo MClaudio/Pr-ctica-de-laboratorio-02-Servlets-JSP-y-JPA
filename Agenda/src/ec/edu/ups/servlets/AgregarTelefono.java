@@ -7,6 +7,7 @@ package ec.edu.ups.servlets;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PhoneDAO;
+import ec.edu.ups.dao.UserDAO;
 import ec.edu.ups.modelo.Phone;
 import ec.edu.ups.modelo.User;
 import java.io.IOException;
@@ -54,12 +55,11 @@ public class AgregarTelefono extends HttpServlet {
         String tipo = request.getParameter("tipo");
         String operadora = request.getParameter("operadora");
 
-        PhoneDAO phoneDao = DAOFactory.getDAOFactory().getPhoneDAO();
-        Phone phone = new Phone(numero, tipo, operadora);
-        User user = DAOFactory.getDAOFactory().getUserDAO().findById(String.valueOf(request.getSession().getAttribute("userID")));
-        phone.setUser(user);
-        phoneDao.create(phone);
-        //user.addPhone(phone);
+        UserDAO userDao = DAOFactory.getDAOFactory().getUserDAO();
+        User user = userDao.findById(String.valueOf(request.getSession().getAttribute("userID")));
+        Phone phone = new Phone(numero, tipo, operadora, user);
+        user.addPhone(phone);
+        userDao.update(user);
         response.sendRedirect("my-agenda");
 
         //System.out.println("Usuario de telefono : " + user.getCedula());
