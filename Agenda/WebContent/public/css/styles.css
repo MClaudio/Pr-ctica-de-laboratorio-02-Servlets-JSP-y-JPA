@@ -1,0 +1,132 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-may-2020, 11:48:02
+    Author     : claum
+*/
+body{
+
+}
+
+.secondary .logo a{
+    height: 45px;
+    text-decoration: none;
+
+}
+.secondary .logo a h2 span{
+    color: #F50057;
+}
+
+
+.layout-header{
+    height: 89vh;
+    display: flex;
+    justify-content: space-between;
+}
+.layout-header .column-bg{
+    background-image: url("../img/people_search_red.png");
+    background-size: cover;
+    height: 100%;
+    width: 40%;
+}
+
+.placeholder.segment{
+    width: 70%;
+    margin: 50px auto;
+}
+
+.ui.labeled.icon.button, .ui.labeled.icon.buttons .button{
+    height: 45px;
+}
+
+.ui .content-btns{
+    display: flex;
+    align-items: center;
+}
+
+.layout-header .column-description{
+    
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 75px; 
+}
+
+.layout-header .column-description h1{
+    font-size: 3em;
+}
+
+.layout-header .column-description h1 span{
+    color: #F50057;
+}
+
+.layout-header .column-description div p{
+    font-size: 1.7em;
+    line-height:20px;
+    margin: 10px 0;
+}
+
+.layout-header .column-description .btn-index-register{
+    width: 300px;
+    margin: 20px auto;
+}
+
+.ui.labeled.icon.button, .ui.labeled.icon.buttons .button{
+    display: flex;
+    align-items: center;
+}
+
+
+footer{
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    bottom: -65px;
+    height: 80px;
+    transition: all .5s ease;
+}
+footer .icon_footer{
+    background: black;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    font-size: 1.3em;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -15px;
+    right: 48.6%;
+    border-radius: 50%;
+    transition: all .7s ease;
+}
+footer .social_foote{
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+footer .social_foote a{
+    color: #FFF;
+    margin: 5px 5px;
+}
+footer .social_foote a:hover{
+    color: #F50057;
+}
+footer p{
+    font-size: .75em;
+    margin-top: 5px;
+    font-family: 'Livvic', sans-serif;
+    font-weight: 100;
+}
+footer:hover{
+    bottom: 0;
+}
+footer:hover .icon_footer{
+    transform: rotate(180deg);
+    background-color: #F50057;
+}
