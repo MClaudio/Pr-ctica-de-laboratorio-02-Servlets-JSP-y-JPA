@@ -29,17 +29,14 @@ public class JPAGenericDao<T, ID> implements GenericDAO<T, ID> {
 		try {
 			em.persist(entity);
 			em.getTransaction().commit();
-			//em.getTransaction().getClass();
 			return true;
 		} catch (Exception e) {
 			System.out.println(">>>>> Error: JPAgenericDao.create "+e);
 			if (em.getTransaction().isActive()) {
 				em.getTransaction().rollback();
-				//em.getTransaction().getClass();
 			}
 			return false;
 		}
-
 	}
 
 	@Override

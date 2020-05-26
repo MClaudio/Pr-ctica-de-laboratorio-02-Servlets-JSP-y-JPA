@@ -83,9 +83,7 @@ public class Phone implements Serializable{
         this.user = user;
     }
     
-    
-    
-    @Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -93,7 +91,6 @@ public class Phone implements Serializable{
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
 		result = prime * result + ((operadora == null) ? 0 : operadora.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -122,11 +119,6 @@ public class Phone implements Serializable{
 			if (other.tipo != null)
 				return false;
 		} else if (!tipo.equals(other.tipo))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}

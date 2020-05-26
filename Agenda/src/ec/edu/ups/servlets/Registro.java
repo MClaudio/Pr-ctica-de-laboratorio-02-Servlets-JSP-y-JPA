@@ -67,9 +67,7 @@ public class Registro extends HttpServlet {
         }else{
             System.out.println("Usuario No Creado");
             response.sendRedirect("registro");
-        }
-        
-        
+        }      
     }
 
     /**

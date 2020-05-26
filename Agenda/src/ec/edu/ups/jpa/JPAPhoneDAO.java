@@ -16,11 +16,8 @@ public class JPAPhoneDAO extends JPAGenericDao<Phone, Integer> implements PhoneD
 	
 	@Override
 	public List<Phone> findByUserId(String cedula) {
-		//List<Phone> phones = new ArrayList<>();
-		//em.getTransaction().begin();
         String jpql = "FROM Phone p WHERE p.user_cedula = '" + cedula + "'";
         List<Phone> phones = (List<Phone>) em.createQuery(jpql).getResultList();
-        //em.close();
         return phones;  
 	}
 
@@ -34,9 +31,6 @@ public class JPAPhoneDAO extends JPAGenericDao<Phone, Integer> implements PhoneD
         }
         return null;
        
-        
-        //String jpql = "FROM Phone p WHERE p.numero = '" + numero + "' AND p.user_cedula = '" + cedula + "'";
-       // return (List<Phone>) em.createQuery(jpql).getResultList();
 	}
 
 }
